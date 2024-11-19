@@ -60,6 +60,13 @@ Consultons l'image ci-dessous ([source](https://tcm-sec.com/llmnr-poisoning-and-
 
 ![llmnr](assets/llmnr-vulnerable.png)
 
+Une attaque LLMNR-poisoning est donc une attaque dans laquelle un acteur malveillant **écoute les requêtes LLMNR et répond avec sa propre adresse IP** (ou une autre adresse IP de son choix) pour rediriger le trafic.  
+Cela peut conduire au **vol d'informations d'identification** et aux attaques par relais dans Active Directory. Attaques relais que nous voyons dans la partie suivante.
+
+
+### Comment capturer les hash NTLM V2 :
+
+
 
 
 
