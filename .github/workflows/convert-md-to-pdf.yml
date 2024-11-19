@@ -30,4 +30,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: latest
           name: README PDF Release
+          allowUpdates = "true"
+
+
 
