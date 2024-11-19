@@ -44,10 +44,12 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 <ins>
 
 ## Vecteur d’attaque initiaux dans un AD
-
 </ins>
 
+<ins>
+
 ### LLMNR poisoning :
+</ins>
 
 LLMNR est un protocole **ipv4 et ipv6** qui permet à un ordinateur de <ins>résoudre le nom d'un autre ordinateur sans utiliser de serveur DNS</ins>. Il est utilisé pour résoudre les noms de domaine sur un réseau local lorsque le serveur DNS n'est pas disponible.  
 LLMNR est activé par défaut sur les systèmes d'exploitation Windows.
@@ -58,6 +60,7 @@ On peut donc se poser la question: __comment ce protocole est-il faillible__ ?
 Consultons l'image ci-dessous ([source](https://tcm-sec.com/llmnr-poisoning-and-how-to-prevent-it/)) :
 
 ![llmnr](assets/llmnr-vulnerable.png)
+
 
 
 
