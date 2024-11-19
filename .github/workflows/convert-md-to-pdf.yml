@@ -20,8 +20,7 @@ jobs:
 
       - name: Convert README.md to PDF
         run: |
-          pandoc README.md -o README.html --css=style.css --pdf-engine=xelatex
-          pandoc README.html -o README.pdf 
+          pandoc README.md -o README.pdf --pdf-engine=xelatex
 
       - name: Upload PDF to GitHub Release
         uses: ncipollo/release-action@v1
