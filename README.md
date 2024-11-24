@@ -70,7 +70,7 @@ NTLM est un protocole d'authentification utilisé par les systèmes d'exploitati
 Afin de capturer les hash NTLM V2, il est possible d'utiliser des outils comme **Responder** ou **Bettercap**.  
 Ces outils permettent de capturer les hash NTLM V2 lorsqu'une requête LLMNR est envoyée sur le réseau.  
 
-![Exemple de capture de hash](assets/capture-ntml.webp)
+![Exemple de capture de hash](assets/capture-ntlm.jpg)
 
 ### Comment craquer les hash NTLM V2 :
 
@@ -104,6 +104,12 @@ Voilà les conditions pour que l'attaque fonctionne :
 
 **Voilà comment fonctionne l'attaque :** [source](https://netspi.com)
 ![SMB relay](assets/smb-relay.png)
+
+
+### Comment avoir un accès shell dans un environnement AD :
+
+Pour avoir un accès shell dans un environnement AD, il est possible d'utiliser des outils comme **Empire** ou **Mimikatz**.
+
 
 ### Kerberoasting :
 
