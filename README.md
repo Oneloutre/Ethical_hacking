@@ -25,7 +25,7 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 - [Powerview](#Powerview-)
 - [Bloodhound quel est son rôle ?](#Bloodhound-quel-est-son-rôle-?)
 - [LDAP domain dump](#LDAP-domain-dump-)
-- [PlumbHound](#PlumbHound-)
+- [PlumHound](#PlumbHound-)
 - [PingCastle](#PingCastle-)
 
 [Post Compromise Attack:](#post-compromise-attack-)
@@ -152,10 +152,11 @@ Enfin, on peut activer le SMB signing pour éviter les attaques de type SMB rela
 La passback attack est une attaque qui consiste à **relayer des informations d'identification NTLMv2**.  
 Au lieu de récupérer les hash NTLMv2 pour les casser, on les relaie vers une autre machine pour obtenir un accès.  
 Cette attaque est d'autant plus vicieuse qu'elle ne nécessite pas de casser les hash NTLMv2, et qu'elle peut être réalisée en quelques secondes. (pas besoin de puissance de calcul)
-
 [Source de l'image](https://beta.hackndo.com/ntlm-relay/#channel-binding)
 
+
 ![Passback attack](assets/passback.png)
+
 
 ### Autres types :
 
@@ -174,6 +175,49 @@ Après avoir compromis un système, il est important de réaliser une phase d'en
 Bref, il est important de faire un tour du propriétaire.
 
 ### Powerview :
+
+Powerview est un outil PowerShell qui permet de réaliser des requêtes sur un Active Directory compromis.
+Il permet de récupérer des informations sur les utilisateurs, les groupes, les machines, les GPO, les ACL, etc.
+Voilà comment il fonctionne :
+
+- Tout d'abord, il faut **charger le module** Powerview dans PowerShell.
+- Ensuite, on peut réaliser des requêtes pour récupérer des informations sur le domaine.
+- Par exemple, on peut récupérer les utilisateurs du domaine, les groupes, les machines, les GPO, etc.
+- On peut également réaliser des requêtes plus complexes pour récupérer des informations sur les ACL, les sessions, etc.
+- Enfin, on peut exporter ces informations dans un fichier pour les analyser plus tard.
+
+
+### Bloodhound: quel est son rôle ?
+
+Bloodhound est un outil qui permet de **visualiser les relations entre les objets d'un Active Directory**.  
+Il permet de visualiser les relations entre les utilisateurs, les groupes, les machines, les GPO, etc.  
+Il permet également de visualiser les chemins d'accès possibles pour un attaquant.  
+Son fonctionnement est simple. Il suffit de **lancer l'agent** sur un poste compromis, de **collecter les données** et de les **importer** dans l'interface graphique de Bloodhound.
+
+![Bloodhound - les relations qu'on peut retrouver](assets/bloodhound.jpg)
+
+### LDAP domain dump :
+
+LDAP domain dump est un outil qui permet de **récupérer des informations sur un domaine Active Directory**.  
+Il permet de récupérer des informations sur les utilisateurs, les groupes, les machines, les GPO, etc.  
+Il permet également de récupérer des informations sur les ACL, les sessions, etc.  
+À la différence de bloodhound, il ne permet pas de visualiser les relations entre les objets, mais il permet de récupérer des informations plus précises.  
+L'outil se base sur des requêtes LDAP pour récupérer ces informations; En effet, LDAP est un protocole qui permet de récupérer des informations sur un annuaire. Qui dit Active Directory, dit LDAP, qui dit LDAP, dit informations sur le domaine.
+
+![LDAP domain relations](assets/ldap.png)
+
+### PlumHound :
+
+Encore un outil qui permet de visualiser les relations entre les objets d'un Active Directory.
+Il s'agit d'un outil open-source qui permet de visualiser les relations entre les utilisateurs, les groupes, les machines, les GPO, etc comme le fait Bloodhound ou même LDAP domain dump.
+PlumHound n'est pas à voir comme un outil séparé de Bloodhound, mais plutôt comme un complément. En effet, on voit souvent des articles parlant de leur utilisation conjointe.
+
+BloodHound se concentre sur les permissions et les relations dans AD, tandis que PlumHound cible spécifiquement les vulnérabilités qui peuvent être exploitées pour se déplacer dans le réseau ou élever ses privilèges.  
+On peut donc voir bloodhound comme un outil de cartographie du réseau, et PlumHound comme un outil de recherche de vulnérabilités.
+
+### PingCastle :
+
+
 
 
 
