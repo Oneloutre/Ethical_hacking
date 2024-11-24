@@ -108,8 +108,35 @@ Voilà les conditions pour que l'attaque fonctionne :
 
 ### Comment avoir un accès shell dans un environnement AD :
 
-Pour avoir un accès shell dans un environnement AD, il est possible d'utiliser des outils comme **Empire** ou **Mimikatz**.
+Pour avoir un accès shell dans un environnement AD, il est possible d'utiliser des outils comme **Empire** ou **Mimikatz**. Le plus simple, étant donné ce que l'on a vu précédemment, est de **capturer des hash NTLM V2** et de les **cracker** pour obtenir les mots de passe en clair.  
+Voici les étapes à suivre, en prenant en compte ce que l'on sait sur NTLM V2 : 
 
+1. Capturer les authentifications NTLMv2 : On utilise des outils comme **Responder** pour piéger des requêtes réseau (LLMNR ou SMB) et **récupérer les hashes NTLMv2**.  
+2. Exploiter les hashes : On peut les utiliser directement dans une attaque Pass-the-Hash pour s'authentifier sur d'autres machines du domaine sans casser le mot de passe.  
+3. Monter en privilèges : Avec un accès à une machine, on cherche à devenir administrateur en capturant d'autres identifiants ou en exploitant des failles.  
+4. Obtenir un shell : Une fois admin, on déploie un shell (par exemple avec PsExec ou PowerShell) pour prendre le contrôle d'une machine.  
+
+### Attaque ipv6 :
+
+Les attaques ipv6 sont des attaques qui exploitent les failles du protocole ipv6.  
+Les attaques IPv6 sur Microsoft Active Directory exploitent souvent le fait que le protocole IPv6 est activé par défaut sur les systèmes Windows, même si le réseau n'est pas configuré pour l'utiliser
+
+On peut simuler un routeur IPv6 malveillant. Les machines clientes Windows basculent automatiquement vers IPv6 si elles détectent un routeur actif, redirigeant leur trafic vers l'attaquant.
+De là, l'attaquant peut capturer des informations d'identification, des données sensibles ou même rediriger le trafic vers des serveurs malveillants.  
+On peut même utiliser ce que l'on a vu précédemment pour capturer des hash NTLM V2.
+
+### Outils utilisés pour les attaques ipv6 :
+
+Il existe évidemment une multitude d'outils pour réaliser des attaques ipv6, mais voici les principaux (à mon avis.) :
+
+- **Mitm6** : un outil qui permet de simuler un routeur IPv6 malveillant pour capturer le trafic réseau.
+- **Responder** : pour capturer des hash NTLM V2, même en ipv6.
+- **Relay6** : pour relayer des informations d'identification NTLMv2.
+
+*MitM6*
+![Mitm6: l'outil pour simuler un routeur](assets/mitm6.png)
+
+### Recommandation pour atténuer les attaques ipv6 :
 
 ### Kerberoasting :
 
