@@ -6,7 +6,7 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 
 ## Sommaire : 
 
-[Vecteur d’attaque initiaux dans un AD](#vecteur-dattaque-initiaux-dans-un-ad)
+[Vecteurs d’attaque initiaux dans un AD](#vecteurs-dattaque-initiaux-dans-un-ad-)
 
 - [LLMNR poisoning](#LLMNR-poisoning-) 
 - [Comment capturer les hash NTLM V2](#Comment-capturer-les-hash-NTLM-V2-)
@@ -18,23 +18,23 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 - [Outils utilisés pour les attaques ipv6](#Outils-utilisés-pour-les-attaques-ipv6-)
 - [Recommandation pour atténuer les attaques ipv6](#Recommandation-pour-atténuer-les-attaques-ipv6-)
 - [Passback attack](#Passback-attack-)
-- [Autres types d’attaques AD](#Autres-types)
+- [Autres types d’attaques AD](#Autres-types-)
 
-[Post compromise enumeration :](#post-compromise-enumeration-:)
+[Post compromise enumeration :](#post-compromise-enumeration-)
 
-- [Powerview](#Powerview)
+- [Powerview](#Powerview-)
 - [Bloodhound quel est son rôle ?](#Bloodhound-quel-est-son-rôle-?)
-- [LDAP domain dump](#LDAP-domain-dump)
-- [PlumbHound](#PlumbHound)
-- [PingCastle](#PingCastle)
+- [LDAP domain dump](#LDAP-domain-dump-)
+- [PlumbHound](#PlumbHound-)
+- [PingCastle](#PingCastle-)
 
-[Post Compromise Attack:](#post-compromise-attack:)
+[Post Compromise Attack:](#post-compromise-attack-)
 
-- [PassTheHash](#PassTheHash)
-- [CrackMapExec](#CrackMapExec)
-- [SecretDump](#SecretDump)
-- [Pass Attack Mitigation](#Pass-attack-mitigation)
-- [Incognito](#Incognito)
+- [PassTheHash](#PassTheHash-)
+- [CrackMapExec](#CrackMapExec-)
+- [SecretDump](#SecretDump-)
+- [Pass Attack Mitigation](#Pass-attack-mitigatio-)
+- [Incognito](#Incognito-)
 - [Kerberoasting](#Kerberoasting-)
 - [GPP et CPassword](#GPP-et-CPassword)
 - [Mimicats](#Mimicats)
@@ -102,7 +102,9 @@ Voilà les conditions pour que l'attaque fonctionne :
 **Remarque :** par défaut, la signature SMB est **désactivée** ou non **appliquée** sur tous les postes de travail Windows (non-serveurs).
 **Autre remarque :** étant donné que ces informations d’identification sont relayées, la force du mot de passe n’a plus d’importance, et c'est problématique.
 
-**Voilà comment fonctionne l'attaque :** [source](https://netspi.com)
+On peut se protéger de ce type d'attaque en **activant la signature SMB**.
+
+**Voilà comment fonctionne l'attaque :** [source](https://beta.hackndo.com/ntlm-relay/)
 
 ![SMB relay](assets/smb-relay.png)
 
@@ -137,6 +139,43 @@ Il existe évidemment une multitude d'outils pour réaliser des attaques ipv6, m
 ![Mitm6: l'outil pour simuler un routeur](assets/mitm6.png)
 
 ### Recommandation pour atténuer les attaques ipv6 :
+
+Encore une fois, on a affaire à un protocole qui est activé par défaut sur les machines Windows, et un man in the middle.  
+Pour atténuer les attaques ipv6, il est possible de **désactiver** le protocole ipv6 sur les machines Windows. (Ou au moins, il faut penser à bien le configurer...)
+
+Il est également possible de configurer les pare-feux pour bloquer les paquets ipv6.  
+Enfin, on peut activer le SMB signing pour éviter les attaques de type SMB relay.
+
+
+### Passback attack :
+
+La passback attack est une attaque qui consiste à **relayer des informations d'identification NTLMv2**.  
+Au lieu de récupérer les hash NTLMv2 pour les casser, on les relaie vers une autre machine pour obtenir un accès.  
+Cette attaque est d'autant plus vicieuse qu'elle ne nécessite pas de casser les hash NTLMv2, et qu'elle peut être réalisée en quelques secondes. (pas besoin de puissance de calcul)
+
+[Source de l'image](https://beta.hackndo.com/ntlm-relay/#channel-binding)
+
+![Passback attack](assets/passback.png)
+
+### Autres types :
+
+Il existe bien sûr d'autres types d'attaques sur Active Directory, mais celles-ci sont les plus courantes.
+On peut notemment citer : 
+- **Attaques de type Golden Ticket** : qui consistent à générer un ticket Kerberos valide pour un utilisateur.
+- **Attaques de type Silver Ticket** : qui consistent à générer un ticket Kerberos valide pour un service.
+- **Attaques de type DCSync** : qui consistent à récupérer les mots de passe des comptes AD.
+- **Attaques de type DCShadow** : qui consistent à injecter des objets dans l'AD sans être détecté.
+
+Et bien d'autres encore.
+
+## Post-compromise enumeration :
+
+Après avoir compromis un système, il est important de réaliser une phase d'enumeration pour comprendre le réseau, la machine et les systèmes auxquels on a accès.  
+Bref, il est important de faire un tour du propriétaire.
+
+### Powerview :
+
+
 
 ### Kerberoasting :
 
