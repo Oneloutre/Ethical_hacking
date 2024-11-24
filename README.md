@@ -103,6 +103,7 @@ Voilà les conditions pour que l'attaque fonctionne :
 **Autre remarque :** étant donné que ces informations d’identification sont relayées, la force du mot de passe n’a plus d’importance, et c'est problématique.
 
 **Voilà comment fonctionne l'attaque :** [source](https://netspi.com)
+
 ![SMB relay](assets/smb-relay.png)
 
 
@@ -133,7 +134,6 @@ Il existe évidemment une multitude d'outils pour réaliser des attaques ipv6, m
 - **Responder** : pour capturer des hash NTLM V2, même en ipv6.
 - **Relay6** : pour relayer des informations d'identification NTLMv2.
 
-*MitM6*
 ![Mitm6: l'outil pour simuler un routeur](assets/mitm6.png)
 
 ### Recommandation pour atténuer les attaques ipv6 :
