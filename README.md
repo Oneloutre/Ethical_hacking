@@ -68,7 +68,9 @@ Cela peut conduire au **vol d'informations d'identification** et aux attaques pa
 NTLM est un protocole d'authentification utilisé par les systèmes d'exploitation Windows. Il est utilisé pour authentifier les utilisateurs et les ordinateurs dans un domaine Windows.
 
 Afin de capturer les hash NTLM V2, il est possible d'utiliser des outils comme **Responder** ou **Bettercap**.  
-Ces outils permettent de capturer les hash NTLM V2 lorsqu'une requête LLMNR est envoyée sur le réseau.
+Ces outils permettent de capturer les hash NTLM V2 lorsqu'une requête LLMNR est envoyée sur le réseau.  
+
+![Exemple de capture de hash](assets/capture-ntml.webp)
 
 ### Comment craquer les hash NTLM V2 :
 
@@ -79,6 +81,29 @@ Cette attaque est possible grâce à la faiblesse du protocole NTLM qui stocke l
 
 ### Recherche sur les mesures d’atténuation LLMMR poisoning :
 
+Pour atténuer les attaques LLMNR poisoning, il est possible de **désactiver** le protocole LLMNR sur les machines Windows.  
+Ce n'est bien sûr pas une vraie solution, mais cela permet de réduire les risques.
+
+Il est également possible de configurer les pare-feux pour bloquer les paquets LLMNR.
+Dans tous les cas, il est recommandé de **ne pas utiliser de protocoles non sécurisés** comme LLMNR.  
+LLMNR est une faille de par sa nature même, il est donc recommandé de le désactiver.
+
+### SMB relay
+
+SMB relay est une attaque qui consiste à **rediriger le trafic SMB vers un autre hôte**.
+Pour cela, il faut que la machine cible soit vulnérable à une attaque de type **NTLM relay**, même si ce n'est pas la seule condition.
+
+Voilà les conditions pour que l'attaque fonctionne :
+
+- La cible ne doit pas appliquer ou activer la signature SMB.
+- Pour obtenir des résultats utiles, les informations d’identification de l’utilisateur relayé doivent avoir le statut d’administrateur local sur la machine.
+- On ne peut pas relayer les informations d’identification à la même machine à partir de laquelle elles ont été capturées.
+
+**Remarque :** par défaut, la signature SMB est **désactivée** ou non **appliquée** sur tous les postes de travail Windows (non-serveurs).
+**Autre remarque :** étant donné que ces informations d’identification sont relayées, la force du mot de passe n’a plus d’importance, et c'est problématique.
+
+**Voilà comment fonctionne l'attaque :** [source](https://netspi.com)
+![SMB relay](assets/smb-relay.png)
 
 ### Kerberoasting :
 
