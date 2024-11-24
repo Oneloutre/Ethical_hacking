@@ -10,14 +10,14 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 
 - [LLMNR poisoning](#LLMNR-poisoning-) 
 - [Comment capturer les hash NTLM V2](#Comment-capturer-les-hash-NTLM-V2-)
-- [Comment craquer les hash NTLM V2](#Comment-craquer-les-hash-NTLM-V2)
-- [Recherche sur les mesures d’atténuation LLMMR poisoning](#Recherche-sur-les-mesures-datténuation-LLMMR-poisoning)
-- [SMB relay attack](#SMB-relay-attack)
-- [Comment avoir un accès shell dans un environnement AD](#Comment-avoir-un-accès-shell-dans-un-environnement-AD)
-- [Attaque ipv6](#Attaque-ipv6)
-- [Outils utilisés pour les attaques ipv6](#Outils-utilisés-pour-les-attaques-ipv6)
-- [Recommandation pour atténuer les attaques ipv6](#Recommandation-pour-atténuer-les-attaques-ipv6)
-- [Passback attack](#Passback-attack)
+- [Comment craquer les hash NTLM V2](#Comment-craquer-les-hash-NTLM-V2-)
+- [Recherche sur les mesures d’atténuation LLMMR poisoning](#Recherche-sur-les-mesures-datténuation-LLMMR-poisoning-)
+- [SMB relay attack](#SMB-relay-attack-)
+- [Comment avoir un accès shell dans un environnement AD](#Comment-avoir-un-accès-shell-dans-un-environnement-AD-)
+- [Attaque ipv6](#Attaque-ipv6-)
+- [Outils utilisés pour les attaques ipv6](#Outils-utilisés-pour-les-attaques-ipv6-)
+- [Recommandation pour atténuer les attaques ipv6](#Recommandation-pour-atténuer-les-attaques-ipv6-)
+- [Passback attack](#Passback-attack-)
 - [Autres types d’attaques AD](#Autres-types)
 
 [Post compromise enumeration :](#post-compromise-enumeration-:)
@@ -68,10 +68,16 @@ Cela peut conduire au **vol d'informations d'identification** et aux attaques pa
 NTLM est un protocole d'authentification utilisé par les systèmes d'exploitation Windows. Il est utilisé pour authentifier les utilisateurs et les ordinateurs dans un domaine Windows.
 
 Afin de capturer les hash NTLM V2, il est possible d'utiliser des outils comme **Responder** ou **Bettercap**.  
+Ces outils permettent de capturer les hash NTLM V2 lorsqu'une requête LLMNR est envoyée sur le réseau.
+
+### Comment craquer les hash NTLM V2 :
+
 Une fois cela fait, il suffit de bruteforce (ou d'uiliser des rainbow tables) pour obtenir le mot de passe en clair.
 
 Cette attaque est possible grâce à la faiblesse du protocole NTLM qui stocke les mots de passe sous forme de hash, et qui dit hash dit possibilité de le casser.
 
+
+### Recherche sur les mesures d’atténuation LLMMR poisoning :
 
 
 ### Kerberoasting :
