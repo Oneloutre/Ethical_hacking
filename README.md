@@ -217,8 +217,19 @@ On peut donc voir bloodhound comme un outil de cartographie du réseau, et PlumH
 
 ### PingCastle :
 
+PingCastle est un outil qui permet de réaliser un audit de sécurité sur un Active Directory.  
+Plus précisément, il permet de réaliser un audit de sécurité sur les GPO, les utilisateurs, les groupes, les machines... Un peu à la manière de Powerview, mais en plus complet.  
+Par exemple, PingCastle permet de détecter les comptes inutilisés, les mots de passe faibles, les GPO mal configurées et il permet également de générer des livrables.  
+Les rapport générés par PingCastle sont très complets et permettent de mettre en lumière les failles de sécurité d'un Active Directory.  
 
 
+![PingCastle - un outil pour auditer un AD](assets/pingcastle.jpg)
+
+
+## Post-compromise attacks :
+
+Après avoir réalisé une phase d'énumeration, il est possible de réaliser des attaques post-compromise pour étendre son impact sur le réseau.
+Pour ce faire, il existe encore une fois une multitude d'outils et de techniques, mais voici les plus courantes.
 
 
 ### Kerberoasting :
