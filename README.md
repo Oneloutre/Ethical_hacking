@@ -232,6 +232,14 @@ Après avoir réalisé une phase d'énumeration, il est possible de réaliser de
 Pour ce faire, il existe encore une fois une multitude d'outils et de techniques, mais voici les plus courantes.
 
 
+### PassTheHash :
+
+PassTheHash est une attaque qui consiste à **utiliser des hash NTLMv2 pour s'authentifier sur un autre système**.  
+Cette attaque permet de s'authentifier sur un autre système sans connaître le mot de passe en clair, en utilisant le hash NTLMv2, sans le déchiffrer, simplement en le passant en paramètre de la requête.  
+Cette attaque ressemble à une attaque de type SMB relay, mais elle est plus simple à réaliser et elle ne nécessite pas de relayer les informations d'identification.  
+
+
+
 ### Kerberoasting :
 
 Le Kerberoasting est une technique d'attaque post-exploitation qui tente de craquer le mot de passe d'un compte de service au sein d'Active Directory (AD).
