@@ -5,7 +5,7 @@ date: 2024-11-19
 
 # Rapport Ethical Hacking
 
-**Auteurs:**
+**Auteurs:**  
 - Roch Triomphe,  
 - Noah Madrid,  
 - Mirija Jonathan,  
@@ -51,7 +51,8 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 - [GPP et CPassword](#GPP-et-CPassword)
 - [Mimikatz](#Mimikatz)
 - [golden tickets](#Golden-tickets)
-- [Conclusion](#Conclusion-)
+
+[Conclusion](#Conclusion-)
 
 ---
 <u>
@@ -316,18 +317,17 @@ Cocorico, Mimikatz a été créé par un français, Benjamin Delpy.
 
 ### Golden tickets :
 
+![ticket](assets/ticket.jpg)
+
 Les Golden tickets sont des tickets Kerberos valides pour un utilisateur.  
 Concrètement, il s'agit de générer un ticket Kerberos valide pour un utilisateur, sans connaître son mot de passe.  
 C'est une attaque de type PassTheHash, qui permet de s'authentifier sur un autre système sans connaître le mot de passe en clair.  
 Cette attaque est très puissante, car elle permet de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.  
 Les Golden tickets sont très dangereux, car ils permettent de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.  
-Il est donc important de se protéger de ces attaques en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
-
-![ticket](assets/ticket.jpg)
+Il est donc important de se protéger de ces attaques en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.
 
 
-
-### Conclusion :
+## Conclusion :
 
 Au terme de ce rapport, on peut dire que l'Active Directory est un élément vraiment sensible dans un réseau d'entreprise.  
 Il est donc important de le sécuriser, notemment en désactivant les protocoles non sécurisés comme LLMNR, en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
