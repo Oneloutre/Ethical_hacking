@@ -39,6 +39,7 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 - [GPP et CPassword](#GPP-et-CPassword)
 - [Mimikatz](#Mimikatz)
 - [golden tickets](#Golden-tickets)
+- [Conclusion](#Conclusion-)
 
 ---
 <u>
@@ -315,7 +316,7 @@ Il est donc important de se protéger de ces attaques en limitant l'utilisation 
 
 ---
 
-## Conclusion :
+### Conclusion :
 
 Au terme de ce rapport, on peut dire que l'Active Directory est un élément vraiment sensible dans un réseau d'entreprise.  
 Il est donc important de le sécuriser, notemment en désactivant les protocoles non sécurisés comme LLMNR, en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
