@@ -314,8 +314,6 @@ Il est donc important de se protéger de ces attaques en limitant l'utilisation 
 
 ![ticket](assets/ticket.jpg)
 
----
-
 ### Conclusion :
 
 Au terme de ce rapport, on peut dire que l'Active Directory est un élément vraiment sensible dans un réseau d'entreprise.  
