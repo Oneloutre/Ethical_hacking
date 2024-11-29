@@ -1,4 +1,16 @@
+---
+autor: Roch Triomphe, Noah Madrid, Mirija, Simon Lestard, Jessy Pertus
+date: 2024-11-19
+---
+
 # Rapport Ethical Hacking
+
+**Auteurs:**
+- Roch Triomphe,  
+- Noah Madrid,  
+- Mirija Jonathan,  
+- Simon Lestard,  
+- Jessy Pertus
 
 ### Qu'est-ce que c'est ?
 
@@ -311,8 +323,9 @@ Cette attaque est très puissante, car elle permet de s'authentifier sur n'impor
 Les Golden tickets sont très dangereux, car ils permettent de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.  
 Il est donc important de se protéger de ces attaques en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
 
-
 ![ticket](assets/ticket.jpg)
+
+
 
 ### Conclusion :
 
