@@ -317,8 +317,6 @@ Cocorico, Mimikatz a été créé par un français, Benjamin Delpy.
 
 ### Golden tickets :
 
-![ticket](assets/ticket.jpg)
-
 Les Golden tickets sont des tickets Kerberos valides pour un utilisateur.  
 Concrètement, il s'agit de générer un ticket Kerberos valide pour un utilisateur, sans connaître son mot de passe.  
 C'est une attaque de type PassTheHash, qui permet de s'authentifier sur un autre système sans connaître le mot de passe en clair.  
@@ -335,3 +333,4 @@ Il est également important de réaliser des phases d'énumeration et de post-co
 Enfin, il est important de se protéger des attaques de type PassTheHash, Kerberoasting, Golden Ticket, etc. en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
 On peut donc dire sans crainte que les protocoles type NTLM sont à éviter, car ces protocoles sont complètement troués.  
 
+![ticket](assets/ticket.jpg)
