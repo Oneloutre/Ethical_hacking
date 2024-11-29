@@ -37,7 +37,7 @@ Ce rapport a pour but de présenter les différentes attaques et outils utilisé
 - [Incognito](#Incognito-)
 - [Kerberoasting](#Kerberoasting-)
 - [GPP et CPassword](#GPP-et-CPassword)
-- [Mimicats](#Mimicats)
+- [Mimikatz](#Mimikatz)
 - [golden tickets](#Golden-tickets)
 
 ---
@@ -239,6 +239,41 @@ Cette attaque permet de s'authentifier sur un autre système sans connaître le 
 Cette attaque ressemble à une attaque de type SMB relay, mais elle est plus simple à réaliser et elle ne nécessite pas de relayer les informations d'identification.  
 
 
+### CrackMapExec :
+
+![CrackMapExec](assets/crackmapexec.jpg)
+
+CrackMapExec est un outil qui permet de réaliser des attaques sur un Active Directory compromis.  
+Ce tool permet de réaliser des attaques de type PassTheHash, mais il permet également de réaliser des attaques de type DCSync, des attaques de type Golden Ticket, etc.  
+Ce logiciel est décrit par kali Linux comme "Ce package est un véritable couteau suisse pour les tests d'intrusion dans les environnements Windows/Active Directory.  
+De l'énumération des utilisateurs connectés et de l'exploration des partages SMB à l'exécution d'attaques de style psexec, en passant par l'auto-injection de Mimikatz/Shellcode/DLL dans la mémoire à l'aide de Powershell, le vidage du NTDS.dit et bien plus encore."
+
+### SecretDump :
+
+SecretDump est un outil qui permet de **récupérer les mots de passe stockés dans la mémoire**.  
+Il permet de récupérer les mots de passe stockés dans la mémoire, les mots de passe stockés dans les GPO, les mots de passe stockés dans les services, etc.  
+C'est clairement un tool de Forensic. Il peut également être utilisé pour récupérer les mots de passe stockés dans les navigateurs, les mots de passe stockés dans les fichiers, ou encore les mots de passe stockés dans les fichiers de configuration.  
+
+### Pass attack mitigation :
+
+Pour atténuer les attaques de type PassTheHash, il est possible de **désactiver le protocole NTLM** sur les machines Windows.
+Il est également possible de **configurer les pare-feux** pour bloquer les paquets NTLM.
+Enfin, il est possible de **configurer les GPO** pour limiter l'utilisation des hash NTLM.
+
+En gros, il faut **limiter l'utilisation des hash NTLM** pour limiter les risques d'attaques de type PassTheHash.
+C'est en ça que les attaques de type PassTheHash sont dangereuses, car elles permettent de s'authentifier sur un autre système sans connaître le mot de passe en clair.
+Une mitigation efficace est donc de limiter l'utilisation des hash NTLM. 
+Comme le disait l'auteur de l'article du site hackndo.com, "Pitié arrêtez d'utiliser NTLM".
+
+### Incognito :
+
+Incognito est un outil qui permet de **mimer un ticket Kerberos**.  
+Concrètement, il permet de générer un ticket Kerberos valide pour un utilisateur, sans connaître son mot de passe.  
+C'est une attaque de type Golden Ticket, qui permet de s'authentifier sur un autre système sans connaître le mot de passe en clair.  
+Cette attaque est très puissante, car elle permet de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.
+
+Voici comment incognito explique son fonctionnement :  
+En un mot, les jetons sont comme les cookies Web. Il s'agit d'une clé temporaire qui vous permet d'accéder au système et au réseau sans avoir à fournir d'informations d'identification à chaque fois que vous accédez à un fichier. Incognito exploite cela de la même manière que le vol de cookies, en réexécutant cette clé temporaire lorsqu'on lui demande de s'authentifier.
 
 ### Kerberoasting :
 
@@ -248,8 +283,43 @@ Dans ce type d'attaque, un cyberadversaire se faisant passer pour l'utilisateur 
 
 Une fois les identifiants en texte brut du compte de service exposés, le cyberadversaire est en possession des identifiants utilisateur, qu'il peut alors utiliser pour usurper l'identité du propriétaire du compte. Il se donne ainsi toutes les apparences d'un utilisateur approuvé et légitime et peut accéder sans restriction à tout système, ressource ou réseau auquel le compte compromis a accès. [Source :](https://www.crowdstrike.com/fr-fr/cybersecurity-101/cyberattacks/kerberoasting/?srsltid=AfmBOorm4DpYOI7icsrFKaWGRjiVSGw8VU_KMYyTEilqydu2mDHtCOsh)
 
+### GPP et CPassword :
+
+Les GPP (Group Policy Preferences) sont des objets de stratégie de groupe qui permettent de stocker des mots de passe en clair dans Active Directory.  
+Ces mots de passe sont stockés dans des fichiers XML, et ils sont chiffrés avec une clé statique.  
+Il est donc possible de récupérer ces mots de passe en chiffrant la clé statique avec une clé publique, et en déchiffrant les mots de passe avec la clé privée.
+Les attaques de type GPP sont donc très dangereuses, car elles permettent de récupérer des mots de passe en clair dans Active Directory. Et c'est un peu la base de la sécurité informatique de ne pas stocker de mots de passe en clair...
+La clé statique utilisée pour chiffrer les mots de passe GPP est connue, et il est donc possible de les récupérer en utilisant des outils comme Mimikatz.
+
+### Mimikatz :
+
+![mimikatz](assets/mimikatz.png)
+
+Mimikatz est un outil qui permet de **récupérer les mots de passe stockés dans la mémoire**.  
+Il rejoint donc ce que l'on a vu précédemment avec GPP et Cpassword, mais il permet également de récupérer les mots de passe stockés dans les GPO, les mots de passe stockés dans les services, etc.  
+Au delà de ça, Mimikatz est vraiment un couteau suisse de la sécurité informatique. Il permet de réaliser presque toutes les attaques citées précédemment, comme le PassTheHash, le Kerberoasting, le Golden Ticket, etc.  
+C'est un outil très puissant, mais il est également très dangereux. Il est donc important de le connaître pour se protéger de ses attaques.  
+Cocorico, Mimikatz a été créé par un français, Benjamin Delpy.
+
+### Golden tickets :
+
+Les Golden tickets sont des tickets Kerberos valides pour un utilisateur.  
+Concrètement, il s'agit de générer un ticket Kerberos valide pour un utilisateur, sans connaître son mot de passe.  
+C'est une attaque de type PassTheHash, qui permet de s'authentifier sur un autre système sans connaître le mot de passe en clair.  
+Cette attaque est très puissante, car elle permet de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.  
+Les Golden tickets sont très dangereux, car ils permettent de s'authentifier sur n'importe quel système du domaine, sans connaître le mot de passe en clair.  
+Il est donc important de se protéger de ces attaques en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
 
 
+![ticket](assets/ticket.jpg)
 
+---
 
+## Conclusion :
+
+Au terme de ce rapport, on peut dire que l'Active Directory est un élément vraiment sensible dans un réseau d'entreprise.  
+Il est donc important de le sécuriser, notemment en désactivant les protocoles non sécurisés comme LLMNR, en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
+Il est également important de réaliser des phases d'énumeration et de post-compromise pour comprendre le réseau, la machine et les systèmes auxquels on a accès.  
+Enfin, il est important de se protéger des attaques de type PassTheHash, Kerberoasting, Golden Ticket, etc. en limitant l'utilisation des hash NTLM, en activant la signature SMB, etc.  
+On peut donc dire sans crainte que les protocoles type NTLM sont à éviter, car ces protocoles sont complètement troués.  
 
