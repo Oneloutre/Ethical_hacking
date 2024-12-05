@@ -1,7 +1,5 @@
 ---
-autor: Roch Triomphe, Noah Madrid, Mirija, Simon Lestard, Jessy Pertus
-date: 2024-11-19
----
+
 
 # Rapport Ethical Hacking
 
