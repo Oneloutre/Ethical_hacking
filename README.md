@@ -4,11 +4,11 @@
 # Rapport Ethical Hacking
 
 **Auteurs:**  
-- Roch Triomphe,  
-- Noah Madrid,  
-- Mirija Jonathan,  
-- Simon Lestard,  
-- Jessy Pertus
+- R.T
+- N.M
+- M.J
+- S.L
+- J.P
 
 ### Qu'est-ce que c'est ?
 
