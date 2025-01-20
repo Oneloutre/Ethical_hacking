@@ -226,6 +226,18 @@ En l'occurence, là on va utiliser `x' OR '1'='1` pour voir si l'injection est f
 Ensuite, on peut utiliser un script python pour voir combien de colonnes sont présentes dans la table, en utilisant la valeur `null`, puis on extrait le nom des tables, puis des colonnes, puis des données.
 
 
+# Conclusion
+
+Bien que ce rapport soit loin d'être exhaustif compte tenu du nombre de challenges proposés par PortSwigger, il permet de donner un aperçu des vulnérabilités les plus courantes et de leur résolution.  
+Il est important de noter que ces vulnérabilités sont très courantes et peuvent être exploitées par des attaquants pour compromettre des systèmes.
+
+Auteurs :
+
+R.T
+M.J.R.A
+S.L
+N.M
+T.M
 
 
 
